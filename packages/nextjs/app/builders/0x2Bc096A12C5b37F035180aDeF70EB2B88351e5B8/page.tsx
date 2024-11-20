@@ -5,7 +5,7 @@ import { NextPage } from "next";
 const GilBuilderPage: NextPage = () => {
   return (
     <div className="w-full max-w-7xl mx-auto flex flex-col px-6 lg:px-10 py-8 lg:py-12">
-      <div className="flex gap-4 items-start">
+      <div className="flex gap-4 flex-col md:flex-row items-center md:items-start">
         <Image
           src="https://gravatar.com/avatar/357be387c9eacb2a78896388cdafbf8d?size=256"
           className="rounded-full"
