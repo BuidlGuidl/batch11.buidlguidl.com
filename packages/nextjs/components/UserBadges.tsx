@@ -1,5 +1,5 @@
 import { useAccount } from "wagmi";
-import { IdentificationIcon, PuzzlePieceIcon } from "@heroicons/react/24/outline";
+import { BookmarkSquareIcon, IdentificationIcon, SignalSlashIcon } from "@heroicons/react/24/outline";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 export const UserBadges = () => {
@@ -21,14 +21,17 @@ export const UserBadges = () => {
 
   return (
     <div className="flex gap-2 mr-2">
-      {isBuilderOfBatch11 && (
-        <div className="tooltip tooltip-bottom" data-tip="Is builder of batch 11">
+      {madeCheckin ? (
+        <div className="tooltip tooltip-bottom" data-tip="A builder of batch 11 with confirmed checkin">
+          <BookmarkSquareIcon className="h-6 w-6 text-success" />
+        </div>
+      ) : isBuilderOfBatch11 ? (
+        <div className="tooltip tooltip-bottom" data-tip="A builder of batch 11">
           <IdentificationIcon className="h-6 w-6 text-success" />
         </div>
-      )}
-      {madeCheckin && (
-        <div className="tooltip tooltip-bottom" data-tip="Made checkin">
-          <PuzzlePieceIcon className="h-6 w-6 text-success" />
+      ) : (
+        <div className="tooltip tooltip-bottom" data-tip="Not a builder of batch 11">
+          <SignalSlashIcon className="h-6 w-6 opacity-50" />
         </div>
       )}
     </div>
