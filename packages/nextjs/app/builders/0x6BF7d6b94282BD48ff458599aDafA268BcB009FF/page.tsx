@@ -22,6 +22,13 @@ interface StyledIconProps extends React.HTMLAttributes<HTMLSpanElement> {
   color?: string;
 }
 
+interface SocialLink {
+  href: string;
+  icon: IconType;
+  lightHoverColor: string;
+  darkHoverColor: string;
+}
+
 const StyledIcon: React.FC<StyledIconProps> = ({ icon: Icon, className, size, color, ...props }) => {
   return (
     <span className={`inline-block ${className}`} {...props}>
@@ -30,11 +37,39 @@ const StyledIcon: React.FC<StyledIconProps> = ({ icon: Icon, className, size, co
   );
 };
 
-const ProfileCard: React.FC = () => {
+// Social links configuration moved outside the component
+const socialLinks: SocialLink[] = [
+  {
+    href: "",
+    icon: FaGithub,
+    lightHoverColor: "hover:text-gray-900",
+    darkHoverColor: "dark:hover:text-gray-200",
+  },
+  {
+    href: "",
+    icon: FaTwitter,
+    lightHoverColor: "hover:text-blue-400",
+    darkHoverColor: "dark:hover:text-blue-300",
+  },
+  {
+    href: "",
+    icon: FaLinkedin,
+    lightHoverColor: "hover:text-blue-600",
+    darkHoverColor: "dark:hover:text-blue-400",
+  },
+  {
+    href: "",
+    icon: FaEnvelope,
+    lightHoverColor: "hover:text-red-500",
+    darkHoverColor: "dark:hover:text-red-400",
+  },
+];
+
+const SimzeProfileCard: React.FC = () => {
   const profile: ProfileData = {
     name: "Similoluwa Abidoye",
     title: "Full Stack Developer",
-    bio: "Passionate about building the future of Web3 with modern technologies. Love working with React, TypeScript, and Solidity, hardhat and so on. Always learning, always coding.",
+    bio: "Passionate about building the future of Web3 with modern technologies. Love working with React, TypeScript, and Solidity, hardhat and soon. Always learning, always coding.",
     avatar: "/simze.jpg",
     location: "Lagos, Nigeria",
     email: "similoluwaeyitayoabidoye@gmail.com",
@@ -46,32 +81,11 @@ const ProfileCard: React.FC = () => {
     },
   };
 
-  const socialLinks = [
-    {
-      href: profile.social.github,
-      icon: FaGithub,
-      lightHoverColor: "hover:text-gray-900",
-      darkHoverColor: "dark:hover:text-gray-200",
-    },
-    {
-      href: profile.social.twitter,
-      icon: FaTwitter,
-      lightHoverColor: "hover:text-blue-400",
-      darkHoverColor: "dark:hover:text-blue-300",
-    },
-    {
-      href: profile.social.linkedin,
-      icon: FaLinkedin,
-      lightHoverColor: "hover:text-blue-600",
-      darkHoverColor: "dark:hover:text-blue-400",
-    },
-    {
-      href: `mailto:${profile.email}`,
-      icon: FaEnvelope,
-      lightHoverColor: "hover:text-red-500",
-      darkHoverColor: "dark:hover:text-red-400",
-    },
-  ];
+  // Dynamically populate href values
+  const populatedSocialLinks = socialLinks.map((link, index) => ({
+    ...link,
+    href: [profile.social.github, profile.social.twitter, profile.social.linkedin, `mailto:${profile.email}`][index],
+  }));
 
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 flex items-center justify-center p-4">
@@ -82,6 +96,8 @@ const ProfileCard: React.FC = () => {
             <Image
               src={profile.avatar}
               alt={profile.name}
+              width={128} // Corresponds to w-32 class (32 * 0.25rem = 128px)
+              height={128} // Corresponds to h-32 class (32 * 0.25rem = 128px)
               className="w-32 h-32 rounded-full mb-4 border-4 border-gray-200 dark:border-gray-700 object-cover"
             />
 
@@ -102,7 +118,7 @@ const ProfileCard: React.FC = () => {
 
             {/* Social Links */}
             <div className="flex space-x-6 mb-6">
-              {socialLinks.map(({ href, icon: Icon, lightHoverColor, darkHoverColor }, index) => (
+              {populatedSocialLinks.map(({ href, icon: Icon, lightHoverColor, darkHoverColor }, index) => (
                 <a
                   key={index}
                   href={href}
@@ -125,4 +141,4 @@ const ProfileCard: React.FC = () => {
   );
 };
 
-export default ProfileCard;
+export default SimzeProfileCard;
