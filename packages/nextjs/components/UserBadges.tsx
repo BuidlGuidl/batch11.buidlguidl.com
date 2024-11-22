@@ -23,15 +23,15 @@ export const UserBadges = () => {
     <div className="flex gap-2 mr-2">
       {madeCheckin ? (
         <div className="tooltip tooltip-bottom" data-tip="A builder of batch 11 with confirmed checkin">
-          <BookmarkSquareIcon className="h-6 w-6 text-success" />
+          <BookmarkSquareIcon className="h-7 w-7 p-1 bg-secondary-content text-secondary rounded-full" />
         </div>
       ) : isBuilderOfBatch11 ? (
         <div className="tooltip tooltip-bottom" data-tip="A builder of batch 11">
-          <IdentificationIcon className="h-6 w-6 text-success" />
+          <IdentificationIcon className="h-7 w-7 p-1 bg-secondary-content text-secondary rounded-full" />
         </div>
       ) : (
         <div className="tooltip tooltip-bottom" data-tip="Not a builder of batch 11">
-          <SignalSlashIcon className="h-6 w-6 opacity-50" />
+          <SignalSlashIcon className="h-7 w-7 p-1 opacity-50" />
         </div>
       )}
     </div>
