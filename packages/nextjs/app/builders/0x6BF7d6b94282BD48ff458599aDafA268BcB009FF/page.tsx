@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { NextPage } from "next";
 import { IconType } from "react-icons";
 import { FaEnvelope, FaGithub, FaLinkedin, FaMapMarkerAlt, FaTwitter } from "react-icons/fa";
 
@@ -65,7 +66,7 @@ const socialLinks: SocialLink[] = [
   },
 ];
 
-const SimzeProfileCard: React.FC = () => {
+const SimzeProfileCard: NextPage = () => {
   const profile: ProfileData = {
     name: "Similoluwa Abidoye",
     title: "Full Stack Developer",
@@ -96,8 +97,8 @@ const SimzeProfileCard: React.FC = () => {
             <Image
               src={profile.avatar}
               alt={profile.name}
-              width={128} // Corresponds to w-32 class (32 * 0.25rem = 128px)
-              height={128} // Corresponds to h-32 class (32 * 0.25rem = 128px)
+              width={128}
+              height={128}
               className="w-32 h-32 rounded-full mb-4 border-4 border-gray-200 dark:border-gray-700 object-cover"
             />
 
