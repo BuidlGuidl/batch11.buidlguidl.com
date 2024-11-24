@@ -7,21 +7,6 @@ interface Builder {
   address: string;
 }
 
-// This needs to be in a server component or API route
-// async function getBuilderAddresses() {
-//   const buildersPath = path.join(process.cwd(), 'app/builders');
-//   try {
-//     const directories = await readdir(buildersPath, { withFileTypes: true });
-//     return directories
-//       .filter(dirent => dirent.isDirectory())
-//       .map(dirent => dirent.name)
-//       .filter(name => name.startsWith('0x'));
-//   } catch (error) {
-//     console.error('Error reading builders directory:', error);
-//     return [];
-//   }
-// }
-
 // Client component
 const BuildersGrid = () => {
   const [builders, setBuilders] = useState<Builder[]>([]);

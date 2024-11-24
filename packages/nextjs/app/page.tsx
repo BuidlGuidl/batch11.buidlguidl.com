@@ -2,24 +2,25 @@
 
 import Link from "next/link";
 import type { NextPage } from "next";
-import { useContractRead } from "wagmi";
 import { BugAntIcon, MagnifyingGlassIcon, RocketLaunchIcon, UserGroupIcon } from "@heroicons/react/24/outline";
 import BuildersGrid from "~~/components/batch/BuildersGrid";
-import deployedContracts from "~~/contracts/deployedContracts";
-
-const BATCH_REGISTRY_ADDRESS = "0x65E42251A2ca0906c640331afd77f45F4682c56C";
-const BATCH_REGISTRY_ABI = deployedContracts[31337].BatchRegistry.abi;
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth/useScaffoldReadContract";
 
 const Home: NextPage = () => {
-  const { data: checkedInCount, isLoading } = useContractRead({
-    address: BATCH_REGISTRY_ADDRESS,
-    abi: BATCH_REGISTRY_ABI,
+  const {
+    data: checkedInCount,
+    isLoading,
+    error,
+  } = useScaffoldReadContract({
+    contractName: "BatchRegistry",
     functionName: "checkedInCounter",
   });
 
   const displayCount = isLoading ? (
     <span className="loading loading-spinner loading-sm text-primary"></span>
-  ) : checkedInCount ? (
+  ) : error ? (
+    "Error loading"
+  ) : typeof checkedInCount === "bigint" ? (
     checkedInCount.toString()
   ) : (
     "0"
