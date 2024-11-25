@@ -3,12 +3,12 @@ import type { NextPage } from "next";
 
 const RoheemahBuilderPage: NextPage = () => {
   return (
-    <div className="min-h-screen flex flex-col md:flex-row items-top justify-start gap-16 px-4 md:px-20">
+    <div className="min-h-screen flex flex-col md:flex-row items-start justify-start gap-16 px-4 md:px-20">
       <div className="flex-1">
-        <div className="flex flex-col md:flex-row items-start justify-start gap-14 mt-20">
+        <div className="flex flex-col-reverse lg:flex-row items-center lg:items-start justify-start gap-14 mt-20">
           <div className="relative">
             <div className="absolute top-0 left-0 w-full h-full bg-[#9BF9F3] rounded-tl-[100px] rounded-br-[100px] -z-10 transform -translate-x-[4px] -translate-y-[4px]"></div>
-            <div className="leaf-shaped py-8 px-6 md:px-10 border-2 flex flex-col items-left justify-start bg-[#0D1117] rounded-tl-[100px] rounded-br-[100px] relative z-10">
+            <div className="leaf-shaped py-8 px-6 md:px-10 border-2 flex flex-col items-center justify-start bg-[#0D1117] rounded-tl-[100px] rounded-br-[100px] relative z-10">
               <div className="flex flex-col items-center justify-start">
                 <div className="w-24 h-24 rounded-full bg-cover bg-center bg-no-repeat border-2 border-[#6EF4E6] text-[20px] font-bold text-white flex items-center justify-center">
                   A.R.A
@@ -18,7 +18,7 @@ const RoheemahBuilderPage: NextPage = () => {
               </div>
               <div className="mt-6 text-[#9B9EA1]">
                 {[
-                  { icon: "link", text: "abolareroheemah@gmail.com" },
+                  { icon: "link", text: "abolareroheemah@gmail.com", href: "mailto:abolareroheemah@gmail.com" },
                   {
                     icon: "link",
                     text: "www.github.com/AbolareRoheemah",
@@ -70,11 +70,11 @@ const RoheemahBuilderPage: NextPage = () => {
             <div className="">
               <div>
                 <p className="text-sm text-[#6AECD9]">&lt;h1&gt;</p>
-                <p className="text-[34px] md:text-[46px] pl-4 leading-[50px] font-medium">Hey👋</p>
-                <p className="text-[34px] md:text-[46px] pl-4 leading-[50px] font-medium">
+                <p className="text-[34px] lg:text-[46px] pl-4 leading-[50px] font-medium">Hey👋</p>
+                <p className="text-[34px] lg:text-[46px] pl-4 leading-[50px] font-medium">
                   I&apos;m <span className="text-[#6AECD9]">Roheemah</span>,
                 </p>
-                <p className="text-[34px] md:text-[46px] leading-[50px] font-medium ml-[1rem]">
+                <p className="text-[34px] lg:text-[46px] leading-[50px] font-medium ml-[1rem]">
                   Frontend & Blockchain Developer
                 </p>
                 <p>
@@ -86,14 +86,10 @@ const RoheemahBuilderPage: NextPage = () => {
                 <p className="text-sm text-[#6AECD9]">&lt;p&gt;</p>
                 <p className="pl-4 text-md font-bold text-[#9B9EA1]">
                   I build user-friendly and visually appealing web applications. I also design, implement and maintain
-                  blockchain based applications. I love meeting people and having meaninful conversations :)
+                  blockchain based applications. I love meeting people and having meaningful conversations :)
                 </p>
                 <p className="text-sm text-[#6AECD9]">&lt;/p&gt;</p>
               </div>
-              {/* <div className='flex items-center justify-start gap-4 mt-6'>
-                                <p className='text-[34px] text-[#6AECD9]'>Let&apos;s Talk</p>
-                                <Link href="#contact" className='bg-[#464647] w-8 h-8 flex items-center justify-center p-4 rounded-full text-[#6AECD9] cursor-pointer'><MailOutlined /></Link>
-                            </div> */}
             </div>
             <div className="py-10 px-8 bg-[#1A1E23] rounded-lg md:rounded-full">
               {[
