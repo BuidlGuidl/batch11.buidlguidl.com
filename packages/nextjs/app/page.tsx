@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import BuildersGrid from "~~/components/batch/BuildersGrid";
 
 const Home: NextPage = () => {
   return (
@@ -44,6 +45,8 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
+        {/* Builders Grid */}
+        <BuildersGrid />
       </div>
     </>
   );
