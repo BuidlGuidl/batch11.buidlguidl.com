@@ -77,6 +77,7 @@ const GbolahanAkandeBuilderPage: NextPage = () => {
       <div className={styles.card}>
         <div className={styles.profileSection}>
           <div className={styles.avatarContainer}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={builderDetails.avatar} alt="Profile" className={styles.avatar} />
           </div>
           <div className={styles.nameSection}>

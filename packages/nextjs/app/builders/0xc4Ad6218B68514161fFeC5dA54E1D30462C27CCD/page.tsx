@@ -60,6 +60,7 @@ const DeveloperProfilePage: NextPage = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <div className="relative inline-block mb-8">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="https://avatars.githubusercontent.com/u/71647648?v=4"
               alt="Profile"
