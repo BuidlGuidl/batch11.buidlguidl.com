@@ -45,7 +45,6 @@ const builderDetails = {
     github: "asante-ntiro",
     linkedin: "https://www.linkedin.com/in/asante-ntiro/",
     email: "asante.ntiro@gmail.com",
-    buidlGuidl: "0xdfaA26eeE0d9Ed0dB940191014872bE40D2F3Ae5",
   },
   bio: (
     <>
