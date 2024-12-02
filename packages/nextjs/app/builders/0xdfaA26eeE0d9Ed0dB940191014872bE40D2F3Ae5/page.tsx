@@ -1,25 +1,10 @@
 import { NextPage } from "next";
-import { EnvelopeIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
+import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { Address } from "~~/components/scaffold-eth";
 
-const GitHubIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="w-6 h-6"
-  >
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
-  </svg>
-);
-
 const styles = {
-  container: "min-h-screen p-8 bg-gradient-to-b from-base-200 to-base-300 dark:from-base-300 dark:to-base-200",
   card: "max-w-4xl mx-auto p-12 bg-base-100 rounded-2xl shadow-xl border border-base-300 dark:bg-base-200 dark:border-base-400",
-  profileSection: "flex flex-col md:flex-row items-center md:items-start gap-8",
+  profileSection: "flex gap-4 flex-col md:flex-row items-center md:items-start",
   avatarContainer: "relative group",
   avatar: "w-40 h-40 md:w-48 md:h-48 rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105",
   nameSection: "flex-1 text-center md:text-left space-y-2",
@@ -28,7 +13,6 @@ const styles = {
   sectionTitle: "text-2xl font-extrabold mb-6 text-base-content dark:text-white flex items-center gap-2",
   titleIcon: "w-6 h-6 text-primary",
   bio: "text-base-content dark:text-white font-semibold leading-relaxed text-lg",
-  highlight: "text-primary bg-primary-content px-1 rounded-md",
   socialLinks: "flex gap-6 items-center justify-center md:justify-start mt-8",
   socialIcon:
     "p-3 hover:bg-base-200 dark:hover:bg-base-300 rounded-xl transition-all duration-200 hover:scale-110 hover:shadow-md text-base-content dark:text-white",
@@ -50,12 +34,13 @@ const builderDetails = {
     <>
       Hello world. I&apos;m Asante, a Tanzanian DevOps engineer and software developer with professional experience
       since 2014. I&apos;ve been exploring blockchain development, focusing on{" "}
-      <span className={styles.highlight}>smart contract programming</span>
-      and <span className={styles.highlight}>secure infrastructure deployment</span>. I&apos;m particularly excited
-      about the potential of <span className={styles.highlight}>DAOs</span> and the use of
-      <span className={styles.highlight}>stable-coins</span> to empower un-banked individuals in Africa. You can check
-      out my buidlGuidl profile
-      <span className={styles.highlight}>
+      <span className="text-primary bg-primary-content px-1 rounded-md">smart contract programming</span>
+      and <span className="text-primary bg-primary-content px-1 rounded-md">secure infrastructure deployment</span>.
+      I&apos;m particularly excited about the potential of{" "}
+      <span className="text-primary bg-primary-content px-1 rounded-md">DAOs</span> and the use of
+      <span className="text-primary bg-primary-content px-1 rounded-md">stable-coins</span> to empower un-banked
+      individuals in Africa. You can check out my buidlGuidl profile
+      <span className="text-primary bg-primary-content px-1 rounded-md">
         <a
           href={`https://app.buidlguidl.com/builders/0xdfaA26eeE0d9Ed0dB940191014872bE40D2F3Ae5`}
           target="_blank"
@@ -72,9 +57,9 @@ const builderDetails = {
 
 const AsanteNtiroBuilderPage: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white py-16 px-4">
       <div className={styles.card}>
-        <div className={styles.profileSection}>
+        <div className="">
           <div className={styles.avatarContainer}>
             <img src={builderDetails.avatar} alt={builderDetails.name} className={styles.avatar} />
           </div>
@@ -88,10 +73,12 @@ const AsanteNtiroBuilderPage: NextPage = () => {
 
         <div className={styles.divider} />
 
-        <div className={styles.section}>
-          <h2 className={styles.sectionTitle}>About Me</h2>
-          <p className={styles.bio}>{builderDetails.bio}</p>
-        </div>
+        <h1 className="text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r dark:from-grey-600 dark:to-grey-600 ">
+          About Me
+        </h1>
+        <h2 className={styles.sectionTitle}></h2>
+        <p className={styles.bio}>{builderDetails.bio}</p>
+
         <div className={styles.divider} />
         <h2 className="text-xl font-bold mt-8">Let&apos;s Connect</h2>
         <div className="flex space-x-6 mb-6">
@@ -103,7 +90,7 @@ const AsanteNtiroBuilderPage: NextPage = () => {
               className={styles.socialIcon}
               aria-label="GitHub"
             >
-              <GitHubIcon />
+              <FaGithub />
             </a>
           )}
           {builderDetails.links.linkedin && (
@@ -114,12 +101,12 @@ const AsanteNtiroBuilderPage: NextPage = () => {
               className={styles.socialIcon}
               aria-label="LinkedIn"
             >
-              <GlobeAltIcon className="w-6 h-6" />
+              <FaLinkedinIn />
             </a>
           )}
           {builderDetails.links.email && (
             <a href={`mailto:${builderDetails.links.email}`} className={styles.socialIcon} aria-label="Email">
-              <EnvelopeIcon className="w-6 h-6" />
+              <FaEnvelope />
             </a>
           )}
         </div>
