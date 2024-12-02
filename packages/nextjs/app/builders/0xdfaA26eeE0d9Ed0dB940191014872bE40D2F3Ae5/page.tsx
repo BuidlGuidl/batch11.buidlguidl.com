@@ -29,6 +29,7 @@ const builderDetails = {
     github: "asante-ntiro",
     linkedin: "https://www.linkedin.com/in/asante-ntiro/",
     email: "asante.ntiro@gmail.com",
+    avatar: "https://1.gravatar.com/userimage/258848136/ae25b744711c5e4d3de308ba0faa00f5?size=256",
   },
   bio: (
     <>
@@ -52,7 +53,6 @@ const builderDetails = {
       .
     </>
   ),
-  avatar: "https://1.gravatar.com/userimage/258848136/ae25b744711c5e4d3de308ba0faa00f5?size=256",
 };
 
 const AsanteNtiroBuilderPage: NextPage = () => {
@@ -61,7 +61,7 @@ const AsanteNtiroBuilderPage: NextPage = () => {
       <div className={styles.card}>
         <div className="">
           <div className={styles.avatarContainer}>
-            <img src={builderDetails.avatar} alt={builderDetails.name} className={styles.avatar} />
+            <img src={builderDetails.links.avatar} alt={builderDetails.name} className={styles.avatar} />
           </div>
           <div className={styles.nameSection}>
             <h1 className={styles.name}>{builderDetails.name}</h1>
