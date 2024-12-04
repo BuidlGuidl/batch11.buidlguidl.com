@@ -109,17 +109,8 @@ contract PixelCanvas is Ownable {
         return canvas[x][y];
     }
 
-    /**
-     * @dev Reset a specific pixel (only owner)
-     * @param x X-coordinate of the pixel
-     * @param y Y-coordinate of the pixel
-     */
-    function resetPixel(uint256 x, uint256 y) external onlyOwner {
-        require(x < CANVAS_WIDTH, "X coordinate out of bounds");
-        require(y < CANVAS_HEIGHT, "Y coordinate out of bounds");
-        
-        delete canvas[x][y];
-    }
+    
+   
 
     /**
      * @dev Get canvas snapshot (useful for viewing entire canvas)
