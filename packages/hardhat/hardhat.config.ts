@@ -7,6 +7,7 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "@nomicfoundation/hardhat-verify";
+import "@nomicfoundation/hardhat-network-helpers";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
 
