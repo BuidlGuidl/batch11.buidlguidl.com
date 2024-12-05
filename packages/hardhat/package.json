@@ -7,7 +7,6 @@
     "check-types": "tsc --noEmit --incremental",
     "compile": "hardhat compile",
     "deploy": "hardhat deploy",
-    "deploy:canvas": "hardhat run deploy/canvasOnchain.ts --network sepolia",
     "fork": "MAINNET_FORKING_ENABLED=true hardhat node --network hardhat --no-deploy",
     "generate": "hardhat run scripts/generateAccount.ts",
     "flatten": "hardhat flatten",
