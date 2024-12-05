@@ -34,7 +34,7 @@ getPixel(x, y): Retrieves individual pixel information
 getCanvasSnapshot(): Returns entire canvas state
 
 3. Initialization
-Test the CanvasOnchain contract
+Test the PixelCanvas contract
 Includes default Buidlguidl Batch11 logo on contract deployment
 Demonstrates initial canvas state
 
