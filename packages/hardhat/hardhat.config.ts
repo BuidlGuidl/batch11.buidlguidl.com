@@ -7,6 +7,7 @@ import "@typechain/hardhat";
 import "hardhat-gas-reporter";
 import "solidity-coverage";
 import "@nomicfoundation/hardhat-verify";
+import "@nomicfoundation/hardhat-network-helpers";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
 
@@ -54,7 +55,7 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     sepolia: {
-      url: `https://rpc2.sepolia.org`,
+      url: `https://eth-sepolia.g.alchemy.com/v2/FIQ1qwifmra7ZqdkVHnZ2lHQAKG8j4Yd`,
       accounts: [deployerPrivateKey],
     },
     arbitrum: {
