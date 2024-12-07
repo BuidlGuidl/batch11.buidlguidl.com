@@ -4,21 +4,9 @@ import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { Address } from "~~/components/scaffold-eth";
 
 const styles = {
-  card: "max-w-4xl mx-auto p-12 bg-base-100 rounded-2xl shadow-xl border border-base-300 dark:bg-base-200 dark:border-base-400",
-  profileSection: "flex gap-4 flex-col md:flex-row items-center md:items-start",
-  avatarContainer: "relative group flex justify-center items-center gap-2",
-  nameSection: "flex-1 text-center md:text-center space-y-2",
-  name: "text-4xl font-extrabold text-base-content dark:text-white bg-gradient-to-r from-primary to-secondary bg-clip-text",
-  section: "mt-10",
-  sectionTitle: "text-2xl font-extrabold mb-6 text-base-content dark:text-white flex items-center gap-2",
-  titleIcon: "w-6 h-6 text-primary",
   bio: "text-base-content dark:text-white font-semibold leading-relaxed text-lg",
-  socialLinks: "flex gap-6 items-center justify-center md:justify-start mt-8",
   socialIcon:
     "p-3 hover:bg-base-200 dark:hover:bg-base-300 rounded-xl transition-all duration-200 hover:scale-110 hover:shadow-md text-base-content dark:text-white",
-  divider: "my-8 border-t border-base-300 dark:border-base-400",
-  addressContainer:
-    "mt-2 bg-base-200 dark:bg-base-300 py-2 px-4 rounded-lg inline-block text-base-content dark:text-white",
 };
 
 const builderDetails = {
@@ -58,30 +46,29 @@ const builderDetails = {
 const AsanteNtiroBuilderPage: NextPage = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 text-gray-900 dark:text-white py-16 px-4">
-      <div className={styles.card}>
+      <div className="max-w-4xl mx-auto p-12 bg-base-100 rounded-2xl shadow-xl border border-base-300 dark:bg-base-200 dark:border-base-400">
         <div className="relative group flex justify-center items-center gap-2">
           <Image
             src={builderDetails.links.avatar}
             className="w-40 h-40 md:w-48 md:h-48 rounded-2xl shadow-lg transition-transform duration-300 group-hover:scale-105"
-            alt="Gil Profile Picture"
+            alt="Asante's Profile Picture"
             width={256}
             height={256}
           />
         </div>
-        <div className={styles.nameSection}>
-          <h1 className={styles.name}>{builderDetails.name}</h1>
-          <div className={styles.addressContainer}>
+        <div className="flex-1 text-center md:text-center space-y-2">
+          <h1 className="text-4xl font-extrabold">{builderDetails.name}</h1>
+          <div className="mt-2 inline-block">
             <Address address={builderDetails.address} />
           </div>
         </div>
 
-        <div className={styles.divider} />
+        <div className="my-8 border-t" />
 
         <h1 className="flex-1 text-5xl text-center md:text-center space-y-2">About Me</h1>
-        <h2 className={styles.sectionTitle}></h2>
         <p className={styles.bio}>{builderDetails.bio}</p>
 
-        <div className={styles.divider} />
+        <div className="my-8 border-t" />
         <h2 className="text-xl font-bold mt-8">Let&apos;s Connect</h2>
         <div className="flex space-x-6 mb-6">
           {builderDetails.links.github && (
