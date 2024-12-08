@@ -15,7 +15,10 @@ const nextConfig = {
     return config;
   },
   images: {
-    remotePatterns: [{ hostname: "gravatar.com" }],
+    remotePatterns: [
+      { hostname: "1.gravatar.com" },
+      { hostname: "gravatar.com" },
+    ],
   },
 };
 
