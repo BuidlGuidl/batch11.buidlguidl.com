@@ -32,24 +32,24 @@ const BuildersGrid = () => {
   const buildersWithoutProfile = (events ?? [])
     .map(event => event.args.builder)
     .filter(address => address && !profileBuilders.includes(address));
-  console.log(buildersWithoutProfile);
 
   return (
     <div className="w-full px-6 py-8">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {profileBuilders.map((address, idx) => (
-          <Link
+          <div
             key={`${address}-${idx}`}
-            href={`/builders/${address}`}
             className="bg-base-100 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-200 border border-base-200"
           >
             <div className="flex flex-col gap-2">
               <Address address={address} size="lg" />
               <div className="flex justify-between items-center">
-                <span className="text-sm font-semibold hover:underline">View Profile →</span>
+                <Link href={`/builders/${address}`} className="text-sm font-semibold hover:underline">
+                  View Profile →
+                </Link>
               </div>
             </div>
-          </Link>
+          </div>
         ))}
         {buildersWithoutProfile.map((address, idx) => (
           <div
