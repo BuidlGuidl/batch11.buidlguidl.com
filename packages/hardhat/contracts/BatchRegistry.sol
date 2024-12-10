@@ -36,7 +36,7 @@ contract BatchRegistry is Ownable {
         _;
     }
 
-    constructor(address initialOwner, uint16 batchNumber) Ownable(initialOwner) {
+    constructor(address initialOwner, uint16 batchNumber) payable Ownable(initialOwner) {
         batchGraduationNFT = new BatchGraduationNFT(address(this));
         BATCH_NUMBER = batchNumber;
     }
