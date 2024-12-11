@@ -27,11 +27,13 @@ contract PixelCanvas is Ownable {
         uint256 timestamp;
     }
 
-    // 2D Mapping to store pixels
-    Pixel[CANVAS_WIDTH][CANVAS_HEIGHT] public canvas;
+    // Mapping to store modified pixels
+mapping(uint256 => mapping(uint256 => Pixel)) public canvas;
+
 
     // Events
     event PixelPlaced(address indexed author, uint256 x, uint256 y, Color color);
+    event Withdrawal(address indexed owner, uint256 amount);
 
     // Constructor to initialize default Buidlguidl Batch11 drawing
     constructor() Ownable(msg.sender){
@@ -45,22 +47,21 @@ contract PixelCanvas is Ownable {
      * This is a simplified representation and can be customized
      */
     function initializeBuidlGuidlLogo() private {
-        // B letter representation
-        for (uint256 x = 10; x < 20; x++) {
-            for (uint256 y = 10; y < 50; y++) {
-                canvas[x][y] = Pixel({
-                    author: owner(),
-                    color: Color.BLUE,
-                    timestamp: block.timestamp
-                });
-            }
+    for (uint256 x = 10; x < 20; x++) {
+        for (uint256 y = 10; y < 50; y++) {
+            canvas[x][y] = Pixel({
+                author: msg.sender,
+                color: Color.BLUE,
+                timestamp: block.timestamp
+            });
         }
+    }
 
         // 11 representation with some pixels
         for (uint256 x = 30; x < 40; x++) {
             for (uint256 y = 20; y < 30; y++) {
                 canvas[x][y] = Pixel({
-                    author: owner(),
+                    author: msg.sender,
                     color: Color.GREEN,
                     timestamp: block.timestamp
                 });
@@ -69,7 +70,7 @@ contract PixelCanvas is Ownable {
 
         // Add some distinctive pixels to represent Buidlguidl spirit
         canvas[32][25] = Pixel({
-            author: owner(),
+            author: msg.sender,
             color: Color.RED,
             timestamp: block.timestamp
         });
@@ -81,21 +82,19 @@ contract PixelCanvas is Ownable {
      * @param y Y-coordinate of the pixel
      * @param color Color of the pixel
      */
-    function placePixel(uint256 x, uint256 y, Color color) external {
-        // Validate pixel coordinates
-        require(x < CANVAS_WIDTH, "X coordinate out of bounds");
-        require(y < CANVAS_HEIGHT, "Y coordinate out of bounds");
+   function placePixel(uint256 x, uint256 y, Color color) external {
+    require(x < CANVAS_WIDTH, "X coordinate out of bounds");
+    require(y < CANVAS_HEIGHT, "Y coordinate out of bounds");
 
-        // Update pixel
-        canvas[x][y] = Pixel({
-            author: msg.sender,
-            color: color,
-            timestamp: block.timestamp
-        });
+    canvas[x][y] = Pixel({
+        author: msg.sender,
+        color: color,
+        timestamp: block.timestamp
+    });
 
-        // Emit event
-        emit PixelPlaced(msg.sender, x, y, color);
-    }
+    emit PixelPlaced(msg.sender, x, y, color);
+}
+
 
     /**
      * @dev Get pixel information
@@ -104,19 +103,26 @@ contract PixelCanvas is Ownable {
      * @return Pixel details
      */
     function getPixel(uint256 x, uint256 y) external view returns (Pixel memory) {
-        require(x < CANVAS_WIDTH, "X coordinate out of bounds");
-        require(y < CANVAS_HEIGHT, "Y coordinate out of bounds");
-        return canvas[x][y];
+    require(x < CANVAS_WIDTH, "X coordinate out of bounds");
+    require(y < CANVAS_HEIGHT, "Y coordinate out of bounds");
+    return canvas[x][y];
+}
+
+
+
+    function withdraw() external onlyOwner {
+        uint256 balance = address(this).balance;
+        require(balance > 0, "No funds to withdraw");
+
+        // Transfer the balance to the owner
+        payable(owner()).transfer(balance);
+
+        // Emit withdrawal event
+        emit Withdrawal(owner(), balance);
     }
 
-    
-   
+    // Fallback and receive functions to accept Ether
+    fallback() external payable {}
 
-    /**
-     * @dev Get canvas snapshot (useful for viewing entire canvas)
-     * @return Array of pixels
-     */
-    function getCanvasSnapshot() external view returns (Pixel[CANVAS_WIDTH][CANVAS_HEIGHT] memory) {
-        return canvas;
-    }
+    receive() external payable {}
 }
