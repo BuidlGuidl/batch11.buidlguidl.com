@@ -4,6 +4,7 @@ import Link from "next/link";
 import type { NextPage } from "next";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
+import BuildersGrid from "~~/components/batch/BuildersGrid";
 
 const Home: NextPage = () => {
   const { data: checkedInCounter } = useScaffoldReadContract({
@@ -50,6 +51,8 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
+        {/* Builders Grid */}
+        <BuildersGrid />
       </div>
     </>
   );
