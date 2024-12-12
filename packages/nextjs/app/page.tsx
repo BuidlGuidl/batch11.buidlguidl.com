@@ -3,8 +3,8 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 import BuildersGrid from "~~/components/batch/BuildersGrid";
+import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
 const Home: NextPage = () => {
   const { data: checkedInCounter } = useScaffoldReadContract({
