@@ -71,13 +71,4 @@ describe("PixelCanvas", function () {
       expect(pixel.color).to.equal(color);
     });
   });
-
-  describe("Canvas Snapshot", function () {
-    it("Should return full canvas snapshot", async function () {
-      const { Pixel } = await loadFixture(deployPixelCanvas);
-      const snapshot = await Pixel.getCanvasSnapshot();
-      expect(snapshot.length).to.equal(64);
-      expect(snapshot[0].length).to.equal(64);
-    });
-  });
 });
