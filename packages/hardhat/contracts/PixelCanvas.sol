@@ -111,15 +111,16 @@ mapping(uint256 => mapping(uint256 => Pixel)) public canvas;
 
 
     function withdraw() external onlyOwner {
-        uint256 balance = address(this).balance;
-        require(balance > 0, "No funds to withdraw");
+    uint256 balance = address(this).balance;
+    require(balance > 0, "No funds to withdraw");
 
-        // Transfer the balance to the owner
-        payable(owner()).transfer(balance);
+    
+    (bool success, ) = payable(owner()).call{value: balance}("");
+    require(success, "Transfer failed");
 
-        // Emit withdrawal event
-        emit Withdrawal(owner(), balance);
-    }
+    
+    emit Withdrawal(owner(), balance);
+}
 
     // Fallback and receive functions to accept Ether
     fallback() external payable {}
