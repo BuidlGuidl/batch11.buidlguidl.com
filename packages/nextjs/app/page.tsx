@@ -3,6 +3,7 @@
 import Link from "next/link";
 import type { NextPage } from "next";
 import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import PixelCanvas from "~~/components/PixelCanvas";
 import BuildersGrid from "~~/components/batch/BuildersGrid";
 import { useScaffoldReadContract } from "~~/hooks/scaffold-eth";
 
@@ -26,6 +27,8 @@ const Home: NextPage = () => {
             <span className="text-primary bg-primary-content px-1 rounded-md">{checkedInCounter?.toString()}</span>
           </p>
         </div>
+
+        <PixelCanvas />
 
         <div className="flex-grow bg-base-300 w-full mt-16 px-8 py-12">
           <div className="flex justify-center items-center gap-12 flex-col sm:flex-row">
