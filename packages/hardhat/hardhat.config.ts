@@ -54,7 +54,7 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     sepolia: {
-      url: `https://rpc2.sepolia.org`,
+      url: `https://ethereum-sepolia.blockpi.network/v1/rpc/public`,
       accounts: [deployerPrivateKey],
     },
     arbitrum: {
