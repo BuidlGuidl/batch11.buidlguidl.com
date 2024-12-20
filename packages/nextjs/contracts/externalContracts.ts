@@ -806,7 +806,7 @@ const externalContracts = {
       ],
     },
     PixelCanvas: {
-      address: "0x54c92BB9f6c3d3416c22070bcD5678cfF57784B4",
+      address: "0x12961542E5Aa59541F2a7bFeF3F504A406AfC946",
       abi: [
         {
           inputs: [],
@@ -963,6 +963,36 @@ const externalContracts = {
               internalType: "uint256",
               name: "timestamp",
               type: "uint256",
+            },
+          ],
+          stateMutability: "view",
+          type: "function",
+        },
+        {
+          inputs: [],
+          name: "getFullCanvas",
+          outputs: [
+            {
+              components: [
+                {
+                  internalType: "address",
+                  name: "author",
+                  type: "address",
+                },
+                {
+                  internalType: "enum PixelCanvas.Color",
+                  name: "color",
+                  type: "uint8",
+                },
+                {
+                  internalType: "uint256",
+                  name: "timestamp",
+                  type: "uint256",
+                },
+              ],
+              internalType: "struct PixelCanvas.Pixel[][]",
+              name: "",
+              type: "tuple[][]",
             },
           ],
           stateMutability: "view",
