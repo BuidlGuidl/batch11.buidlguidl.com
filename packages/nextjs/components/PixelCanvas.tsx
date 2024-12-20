@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 
 const ColorMap = {
@@ -16,13 +16,19 @@ const PixelCanvas = () => {
   const [placingCoordinates, setPlacingCoordinates] = useState<{ x: bigint; y: bigint } | null>(null);
   const [placingColor, setPlacingColor] = useState<number | null>(null);
 
-  const { data: canvasData } = useScaffoldReadContract({
+  const { data: canvasData, refetch: refetchCanvas } = useScaffoldReadContract({
     contractName: "PixelCanvas",
     functionName: "getFullCanvas",
     watch: true,
   });
 
-  const { writeContractAsync } = useScaffoldWriteContract("PixelCanvas");
+  const { writeContractAsync, isSuccess } = useScaffoldWriteContract("PixelCanvas");
+
+  useEffect(() => {
+    if (isSuccess) {
+      refetchCanvas();
+    }
+  }, [isSuccess, refetchCanvas]);
 
   const save = async () => {
     if (!placingCoordinates || placingColor === null) return;
